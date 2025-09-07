@@ -60,7 +60,6 @@ class OrderFeedPage(BasePage):
     @allure.step('Закрытия окна с заказом')
     def click_order_exit_button(self):
         self.wait_clickable_element(OrderFeedLocators.ORDER_EXIT_BUTTON)
-        time.sleep(3)
         self.click_element(OrderFeedLocators.ORDER_EXIT_BUTTON)
 
     @allure.step('Получить номер заказа из истории')
@@ -101,4 +100,7 @@ class OrderFeedPage(BasePage):
     @allure.step("Убеждаемся, что номер заказа не 9999")
     def incorrect_number_invisible(self):
         self.wait_until_element_invisible(OrderFeedLocators.INCORRECT_NUMBER)
-        time.sleep(3)
+
+    @allure.step("Ожидаем видимости текста в модальном окне")
+    def wait_until_text_visible(self):
+        self.wait_visibility_element(OrderFeedLocators.MODAL_GET_ORDER)
